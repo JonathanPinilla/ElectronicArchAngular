@@ -12,12 +12,15 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {NgOptimizedImage} from "@angular/common";
+import { GridComponent } from './components/grid/grid.component';
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    GridComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import {NgOptimizedImage} from "@angular/common";
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,11 @@
+.flex{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cards{
+  max-width: 400px;
+  margin: 5%;
+}
