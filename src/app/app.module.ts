@@ -14,6 +14,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {NgOptimizedImage} from "@angular/common";
 import { GridComponent } from './components/grid/grid.component';
 import {MatCardModule} from "@angular/material/card";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {MatCardModule} from "@angular/material/card";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
     MatToolbarModule,
