@@ -11,6 +11,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {MatIconModule} from "@angular/material/icon";
     MatInputModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    NgOptimizedImage
   ],
   providers: [],
   bootstrap: [AppComponent]
