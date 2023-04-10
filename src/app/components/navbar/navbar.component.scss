@@ -4,23 +4,32 @@
 }
 
 .searchBar{
-  width: 30%;
-  position: absolute;
-  right: 35%;
+  width: 40%;
+  position: fixed;
+  left: 30%;
 }
 
 mat-toolbar{
-  height: 10%;
+  min-height: 70px;
+  position: fixed;
+  z-index: 1000;
 }
 
 a{
-  height: 80px;
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  border-radius: 5%;
+  padding: 5px;
+}
+
+a:hover{
+  background-color: #ffffff1a;
 }
 
 img{
-  background-color: white;
-  border-radius: 5%;
-  padding: 0 5px 0 5px;
-  width: 80px;
-  height: 80px;
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
 }
