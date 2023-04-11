@@ -1,1 +1,12 @@
+.sidenav {
+  position: fixed;
+  top: 70px; /* adjust as needed */
+  right: 0;
+  bottom: 0;
+  width: 250px;
+  z-index: 1001;
+}
 
+.grid {
+  margin-top: 70px; /* adjust as needed */
+}

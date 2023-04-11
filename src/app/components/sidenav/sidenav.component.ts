@@ -1,5 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
-import {MatDrawer} from "@angular/material/sidenav";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-sidenav',

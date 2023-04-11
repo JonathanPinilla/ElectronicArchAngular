@@ -1,9 +1,14 @@
+<button mat-icon-button class="cart-button" (click)="drawer.toggle()">
+    <mat-icon>shopping_cart</mat-icon>
+    <div class="cart-item-count">{{ cartItems.length }}</div>
+</button>
+
 <mat-drawer-container class="example-container">
-    <mat-drawer #drawer class="example-sidenav" mode="over" position="end">
+    <mat-drawer #drawer class="example-sidenav" mode="side" position="end">
         <mat-list role="list">
             <div class="item" *ngFor="let item of cartItems" role="listitem">
                 <div>
-                    <img [src]="item.image" alt="{{ item.name }}">
+                    <img [src]="item.image" alt="{{ item.name }}" class="cart-item-image">
                     <button mat-icon-button><mat-icon>delete</mat-icon></button>
                 </div>
                 <div class="cart-item-name">{{ item.name }}</div>
@@ -12,7 +17,4 @@
             </div>
         </mat-list>
     </mat-drawer>
-
-    <app-grid></app-grid>
-
 </mat-drawer-container>

@@ -1,3 +1,28 @@
+/*CartButton ----------*/
+
+.cart-button {
+  position: absolute;
+  right: 20px;
+  top: -60px;
+  z-index: 1001;
+}
+
+.cart-item-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /*Sidenav*/
 .cart-item-image {
   width: 48px;
@@ -33,7 +58,6 @@
 }
 
 .example-sidenav {
-  top: 70px;
   padding: 20px;
   min-width: 150px;
   max-width: 200px;
