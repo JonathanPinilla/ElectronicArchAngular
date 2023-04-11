@@ -7,24 +7,9 @@
     <mat-label>search</mat-label>
     <input matInput type="text" placeholder="search">
   </mat-form-field>
-  <button mat-icon-button class="cart-button" (click)="drawer.toggle()">
+  <button mat-icon-button class="cart-button" (click)="toggleSidenav()">
     <mat-icon>shopping_cart</mat-icon>
     <div class="cart-item-count">{{ cartItems.length }}</div>
   </button>
 
 </mat-toolbar>
-
-<mat-drawer-container class="example-container">
-  <mat-drawer #drawer class="example-sidenav" mode="over" position="end">
-    <mat-list role="list">
-      <div class="item" *ngFor="let item of cartItems" role="listitem">
-        <div>
-          <img [src]="item.image" alt="{{ item.name }}">
-          <button mat-icon-button><mat-icon>delete</mat-icon></button>
-        </div>
-        <div class="cart-item-name">{{ item.name }}</div>
-        <div class="cart-item-price">{{ item.price }}</div>
-      </div>
-    </mat-list>
-  </mat-drawer>
-</mat-drawer-container>

@@ -1,5 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
-import {MatDrawer} from "@angular/material/sidenav";
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -7,6 +6,12 @@ import {MatDrawer} from "@angular/material/sidenav";
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+
+  @Output() toggleSidenavEvent = new EventEmitter();
+
+  toggleSidenav() {
+    this.toggleSidenavEvent.emit();
+  }
 
   showFiller = false;
 

@@ -18,13 +18,15 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatListModule} from "@angular/material/list";
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    GridComponent
+    GridComponent,
+    SidenavComponent
   ],
     imports: [
         BrowserModule,

@@ -1,0 +1,18 @@
+<mat-drawer-container class="example-container">
+    <mat-drawer #drawer class="example-sidenav" mode="over" position="end">
+        <mat-list role="list">
+            <div class="item" *ngFor="let item of cartItems" role="listitem">
+                <div>
+                    <img [src]="item.image" alt="{{ item.name }}">
+                    <button mat-icon-button><mat-icon>delete</mat-icon></button>
+                </div>
+                <div class="cart-item-name">{{ item.name }}</div>
+                <div class="cart-item-price">{{ item.price }}</div>
+                <mat-divider></mat-divider>
+            </div>
+        </mat-list>
+    </mat-drawer>
+
+    <app-grid></app-grid>
+
+</mat-drawer-container>

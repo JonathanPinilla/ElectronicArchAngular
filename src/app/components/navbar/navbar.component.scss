@@ -53,44 +53,4 @@ img{
 }
 
 
-/*Sidenav*/
-.cart-item-image {
-  width: 48px;
-  height: 48px;
-  margin-right: 16px;
-}
-
-.item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.cart-item-name {
-  font-weight: bold;
-}
-
-.cart-item-price {
-  color: grey;
-}
-
-.example-container {
-  width: 100%;
-  height: 100%;
-}
-
-.example-sidenav-content {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-.example-sidenav {
-  top: 70px;
-  padding: 20px;
-  min-width: 150px;
-  max-width: 200px;
-}
-
 

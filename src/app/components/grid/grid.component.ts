@@ -8,12 +8,15 @@ import { ItemsService } from 'src/app/services/items.service';
 })
 export class GridComponent implements OnInit{
 
-  items: any[] = [];
+  items: any[] = [
+    { name: 'Item 1', price: 10.99, description: "testItemDesc", image: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Diode-closeup.jpg' },
+    { name: 'Item 2', price: 7.99, description: "testItemDesc" ,image: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Diode-closeup.jpg' }
+  ];
 
   constructor(private service: ItemsService){}
 
   ngOnInit(): void {
-    this.getAll();
+    //this.getAll();
   }
 
   getAll(){
