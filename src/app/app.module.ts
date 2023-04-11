@@ -19,6 +19,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatListModule} from "@angular/material/list";
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import {MatBadgeModule} from "@angular/material/badge";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
         MatCardModule,
         MatSidenavModule,
         MatMenuModule,
-        MatListModule
+        MatListModule,
+        MatBadgeModule
     ],
   providers: [],
   bootstrap: [AppComponent]
