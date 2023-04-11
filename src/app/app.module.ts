@@ -16,6 +16,8 @@ import { GridComponent } from './components/grid/grid.component';
 import {MatCardModule} from "@angular/material/card";
 import { HttpClientModule } from '@angular/common/http';
 import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import {MatSidenavModule} from "@angular/material/sidenav";
         MatIconModule,
         NgOptimizedImage,
         MatCardModule,
-        MatSidenavModule
+        MatSidenavModule,
+        MatMenuModule,
+        MatListModule
     ],
   providers: [],
   bootstrap: [AppComponent]

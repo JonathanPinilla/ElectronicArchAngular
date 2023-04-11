@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  showFiller = false;
+
+  cartItems = [
+    { name: 'Item 1', price: 10.99, image: 'url' },
+    { name: 'Item 2', price: 7.99, image: 'url' }
+  ];
 }
