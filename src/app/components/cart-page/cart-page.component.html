@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+<div class="shoppingPage">
+  <h1>Shopping Cart</h1>
+  <mat-divider></mat-divider>
+  <br>
+  <div class="itemsList">
+    <div *ngFor="let item of items">
+      <div class="items">
+        <img [src]=item.image alt="{{item.name}}"/>
+        <h3>{{item.name}}</h3>
+        <p>{{item.description}}</p>
+        <p>{{item.price}}</p>
+        <div>
+          <button mat-icon-button (click)="addRemove(item, 'remove')">
+            <mat-icon>remove</mat-icon>
+          </button>
+          <span>{{ item.quantity }}</span>
+          <button mat-icon-button (click)="addRemove(item, 'add')">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+
+        <button mat-icon-button (click)="removeFromCart(item)">
+          <mat-icon>delete</mat-icon>
+        </button>
+
+      </div>
+      <mat-divider></mat-divider>
+      <br>
+    </div>
+  </div>
+  <div>
+    <h3>Total: {{totalPrice}}</h3>
+  </div>
+  <button mat-raised-button color="primary">Checkout</button>
+</div>

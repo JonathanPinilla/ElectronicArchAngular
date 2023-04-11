@@ -20,6 +20,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatListModule} from "@angular/material/list";
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import {MatBadgeModule} from "@angular/material/badge";
+import { CartPageComponent } from './components/cart-page/cart-page.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {MatBadgeModule} from "@angular/material/badge";
     HomeComponent,
     NavbarComponent,
     GridComponent,
-    SidenavComponent
+    SidenavComponent,
+    CartPageComponent
   ],
     imports: [
         BrowserModule,
