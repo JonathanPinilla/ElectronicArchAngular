@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {MatDrawer} from "@angular/material/sidenav";
 
 @Component({
   selector: 'app-navbar',
@@ -7,8 +8,10 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  showFiller = false;
+
   cartItems = [
-    { name: 'Item 1', price: 10.99, image: 'url' },
-    { name: 'Item 2', price: 7.99, image: 'url' }
+    { name: 'Item 1', price: 10.99, image: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Diode-closeup.jpg' },
+    { name: 'Item 2', price: 7.99, image: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Diode-closeup.jpg' }
   ];
 }
