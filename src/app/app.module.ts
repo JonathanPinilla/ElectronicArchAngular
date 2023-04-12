@@ -21,6 +21,9 @@ import {MatListModule} from "@angular/material/list";
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import {MatBadgeModule} from "@angular/material/badge";
 import { CartPageComponent } from './components/cart-page/cart-page.component';
+import { LoginComponent } from './components/login/login.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
     NavbarComponent,
     GridComponent,
     SidenavComponent,
-    CartPageComponent
+    CartPageComponent,
+    LoginComponent,
+    RegisterComponent
   ],
     imports: [
         BrowserModule,
@@ -46,7 +51,8 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
         MatSidenavModule,
         MatMenuModule,
         MatListModule,
-        MatBadgeModule
+        MatBadgeModule,
+        ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]
