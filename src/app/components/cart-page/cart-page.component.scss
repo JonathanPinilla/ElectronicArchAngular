@@ -7,8 +7,7 @@ app-navbar{
 .shoppingPage{
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(0, -50%);
   flex-wrap: wrap;
   flex-direction: column;
   width: 80%;
@@ -40,4 +39,53 @@ img{
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.orderForm{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+  flex-wrap: wrap;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  text-align: center;
+  height: 100vh;
+}
+
+mat-form-field{
+  margin-bottom: 20px;
+  width: 90%;
+}
+
+h2{
+  width: 90%;
+}
+
+@media screen and (max-width: 1000px) {
+  /* Styles for screens with a maximum width of 768px */
+  .shoppingPage {
+    width: 100%;
+    position: static;
+    transform: translate(0, 0);
+    box-shadow: #000000a0 0 0 10px;
+    padding-bottom: 20px;
+  }
+
+  .orderForm{
+    width: 100%;
+    position: relative;
+    transform: translate(0, 0);
+    box-shadow: none;
+  }
+
+  .pageAlignment{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
 }

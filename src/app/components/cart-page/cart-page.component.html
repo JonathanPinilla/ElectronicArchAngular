@@ -1,38 +1,58 @@
 <app-navbar></app-navbar>
-<div class="shoppingPage">
-  <h1>Shopping Cart</h1>
-  <mat-divider></mat-divider>
-  <br>
-  <div class="itemsList">
-    <div *ngFor="let item of items">
-      <div class="items">
-        <img [src]=item.image alt="{{item.name}}"/>
-        <h3>{{item.name}}</h3>
-        <p>{{item.description}}</p>
-        <p>{{item.price}}</p>
-        <div>
-          <button mat-icon-button (click)="addRemove(item, 'remove')">
-            <mat-icon>remove</mat-icon>
+<div class="pageAlignment">
+
+  <div class="shoppingPage">
+    <h1>Shopping Cart</h1>
+    <mat-divider></mat-divider>
+    <br>
+    <div class="itemsList">
+      <div *ngFor="let item of items">
+        <div class="items">
+          <img [src]=item.image alt="{{item.name}}"/>
+          <h3>{{item.name}}</h3>
+          <p>{{item.description}}</p>
+          <p>{{item.price}}</p>
+          <div>
+            <button mat-icon-button (click)="addRemove(item, 'remove')">
+              <mat-icon>remove</mat-icon>
+            </button>
+            <span>{{ item.quantity }}</span>
+            <button mat-icon-button (click)="addRemove(item, 'add')">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+
+          <button mat-icon-button (click)="removeFromCart(item)">
+            <mat-icon>delete</mat-icon>
           </button>
-          <span>{{ item.quantity }}</span>
-          <button mat-icon-button (click)="addRemove(item, 'add')">
-            <mat-icon>add</mat-icon>
-          </button>
+
         </div>
-
-        <button mat-icon-button (click)="removeFromCart(item)">
-          <mat-icon>delete</mat-icon>
-        </button>
-
+        <mat-divider></mat-divider>
+        <br>
       </div>
-      <mat-divider></mat-divider>
-      <br>
     </div>
+    <div>
+      <h3 *ngIf="items.length > 0">Total: {{totalPrice}}</h3>
+      <h3 *ngIf="items.length === 0">You didn't add items to the cart yet, click below or in the home button to see what we have for you</h3>
+    </div>
+    <button mat-raised-button color="primary" *ngIf="items.length > 0">Checkout</button>
+    <button mat-raised-button color="accent" *ngIf="items.length === 0">Shop</button>
   </div>
-  <div>
-    <h3 *ngIf="items.length > 0">Total: {{totalPrice}}</h3>
-    <h3 *ngIf="items.length === 0">You didn't add items to the cart yet, click below or in the home button to see what we have for you</h3>
+
+  <div class="orderForm mat-elevation-z4">
+    <form>
+      <h2>Fill the information for your order</h2>
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Address</mat-label>
+        <input matInput placeholder="Address" name="address">
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Contact Number</mat-label>
+        <input matInput placeholder="Number" name="number">
+      </mat-form-field>
+    </form>
+    <button mat-raised-button type="submit" color="primary">Buy</button>
   </div>
-  <button mat-raised-button color="primary" *ngIf="items.length > 0">Checkout</button>
-  <button mat-raised-button color="accent" *ngIf="items.length === 0">Shop</button>
+
 </div>
+
