@@ -24,6 +24,9 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { LoginComponent } from './components/login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { RegisterComponent } from './components/register/register.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,9 @@ import { RegisterComponent } from './components/register/register.component';
         MatMenuModule,
         MatListModule,
         MatBadgeModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideAuth(() => getAuth())
     ],
   providers: [],
   bootstrap: [AppComponent]
