@@ -40,6 +40,7 @@ export class CartPageComponent implements OnInit {
 
   removeFromCart(item: any) {
     this.items.splice(this.items.indexOf(item), 1);
+    this.total();
   }
 
   addRemove(item: any, action: string) {

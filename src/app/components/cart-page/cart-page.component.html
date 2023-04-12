@@ -30,7 +30,9 @@
     </div>
   </div>
   <div>
-    <h3>Total: {{totalPrice}}</h3>
+    <h3 *ngIf="items.length > 0">Total: {{totalPrice}}</h3>
+    <h3 *ngIf="items.length === 0">You didn't add items to the cart yet, click below or in the home button to see what we have for you</h3>
   </div>
-  <button mat-raised-button color="primary">Checkout</button>
+  <button mat-raised-button color="primary" *ngIf="items.length > 0">Checkout</button>
+  <button mat-raised-button color="accent" *ngIf="items.length === 0">Shop</button>
 </div>
