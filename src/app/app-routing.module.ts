@@ -4,6 +4,7 @@ import {HomeComponent} from "./components/home/home.component";
 import {CartPageComponent} from "./components/cart-page/cart-page.component";
 import {LoginComponent} from "./components/login/login.component";
 import {RegisterComponent} from "./components/register/register.component";
+import {canActivate, redirectUnauthorizedTo} from "@angular/fire/auth-guard";
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
   },
   {
     path: "shopping-cart",
-    component: CartPageComponent
+    component: CartPageComponent,
+    ...canActivate(() => redirectUnauthorizedTo(['login']))
   },
   {
     path: "login",
