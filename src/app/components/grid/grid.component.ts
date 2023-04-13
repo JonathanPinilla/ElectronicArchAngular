@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemsService } from 'src/app/services/items.service';
+import {ShoppingCartService} from "../../services/shopping-cart.service";
 
 @Component({
   selector: 'app-grid',
@@ -8,15 +9,12 @@ import { ItemsService } from 'src/app/services/items.service';
 })
 export class GridComponent implements OnInit{
 
-  items: any[] = [
-    { name: 'Item 1', price: 10.99, description: "testItemDesc", image: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Diode-closeup.jpg' },
-    { name: 'Item 2', price: 7.99, description: "testItemDesc" ,image: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Diode-closeup.jpg' }
-  ];
+  items: any[] = [];
 
-  constructor(private service: ItemsService){}
+  constructor(private service: ItemsService, private shoppingCartService: ShoppingCartService){}
 
   ngOnInit(): void {
-    //this.getAll();
+    this.getAll();
   }
 
   getAll(){
@@ -26,6 +24,10 @@ export class GridComponent implements OnInit{
       },
       error:error => console.error(error)
     });
+  }
+
+  addToCart(itemId: string){
+    this.shoppingCartService.addToCart(itemId);
   }
 
 }
