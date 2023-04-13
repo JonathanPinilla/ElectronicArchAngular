@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {ShoppingCartService} from "../../services/shopping-cart.service";
+import {ItemsService} from "../../services/items.service";
 
 @Component({
   selector: 'app-cart-page',
@@ -8,27 +10,22 @@ import {Component, OnInit} from '@angular/core';
 export class CartPageComponent implements OnInit {
 
 
-  items: any[] = [
-    {
-      name: 'Item 1',
-      price: 10.99,
-      description: "testItemDesc",
-      image: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Diode-closeup.jpg',
-      quantity: 1
-    },
-    {
-      name: 'Item 2',
-      price: 7.99,
-      description: "testItemDesc",
-      image: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Diode-closeup.jpg',
-      quantity: 1
-    }
-  ];
+  items: any[] = [];
 
   totalPrice: number = 0;
 
+  constructor(private shoppingCartService: ShoppingCartService, private itemsService: ItemsService) {
+    this.items = this.shoppingCartService.getItems();
+  }
+
   ngOnInit(): void {
     this.total();
+    this.shoppingCartService.getItems().forEach(itemId => {
+      this.itemsService.getOne(itemId).subscribe(data => {
+        console.log(data);
+        this.items.push(data);
+      });
+    });
   }
 
   total() {
