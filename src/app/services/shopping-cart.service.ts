@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import {BehaviorSubject, Observable, Subject} from "rxjs";
+import {CartItem} from "../models/cartItem";
 
 @Injectable({
   providedIn: 'root'
@@ -6,26 +8,48 @@ import { Injectable } from '@angular/core';
 
 export class ShoppingCartService {
 
-  items: string[] = [];
+  private cartItems: CartItem[] = [];
+  private cartItemsSubject = new Subject<CartItem[]>();
 
   constructor() {
     const storedItems = localStorage.getItem('cart');
     if (storedItems) {
-      this.items = JSON.parse(storedItems);
+      this.cartItems = JSON.parse(storedItems);
+      this.cartItemsSubject.next(this.cartItems);
     }
   }
 
-  addToCart(itemId: string) {
-    this.items.push(itemId);
-    localStorage.setItem('cart', JSON.stringify(this.items));
+  addToCart(item: CartItem): void {
+    const cartItem = {
+      ...item,
+      quantity: 1
+    };
+    const existingItem = this.cartItems.find(ci => ci.id === item.id);
+    if (existingItem) {
+      existingItem.quantity++;
+    } else {
+      this.cartItems.push(cartItem);
+    }
+    localStorage.setItem('cart', JSON.stringify(this.cartItems));
+    this.cartItemsSubject.next(this.cartItems);
   }
 
-  getItems() {
-    return this.items;
+  removeFromCart(itemId: string): void {
+    const index = this.cartItems.findIndex(ci => ci.id === itemId);
+    if (index >= 0) {
+      const item = this.cartItems[index];
+      if (item.quantity > 1) {
+        item.quantity--;
+      } else {
+        this.cartItems.splice(index, 1);
+      }
+      localStorage.setItem('cart', JSON.stringify(this.cartItems));
+      this.cartItemsSubject.next(this.cartItems);
+    }
   }
 
-  removeFromCart(itemId: string) {
-    this.items = this.items.filter(item => item !== itemId);
-    localStorage.setItem('cart', JSON.stringify(this.items));
+  getCartItems(): Observable<CartItem[]> {
+    return this.cartItemsSubject.asObservable();
   }
+
 }
