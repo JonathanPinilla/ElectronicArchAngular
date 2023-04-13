@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-register',
@@ -14,8 +14,15 @@ export class RegisterComponent {
   }
 
   registerForm = this.builder.group({
-    email: '',
-    password: ''
+    name: ['', Validators.required],
+    lastName: ['', Validators.required],
+    birthDate: ['', [Validators.required, Validators.pattern('^\\d{4}-\\d{2}-\\d{2}$')]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(8)]],
   });
+
+  submit(){
+
+  }
 
 }
