@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <div>
   <form class="formContainer" [formGroup] = "registerForm">
 
@@ -49,7 +51,7 @@
         </mat-error>
       </mat-form-field>
       <button mat-raised-button type="submit" (click)="submit()" [disabled]="!registerForm.valid" color="primary">Register</button>
-
+      <button mat-flat-button [routerLink]="['/login']" [ngStyle]="{marginTop:'20px'}">login instead</button>
     </mat-card>
 
   </form>

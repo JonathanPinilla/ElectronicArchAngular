@@ -1,23 +1,36 @@
-import { Component } from '@angular/core';
-import {FormBuilder} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {ClientService} from "../../services/client.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
-  constructor(
-    private builder: FormBuilder,
-  ) {
+  loginForm: FormGroup = new FormGroup({});
+
+  constructor(private builder: FormBuilder, private clientService: ClientService, private router: Router) {
   }
 
-  loginForm = this.builder.group({
-    email: '',
-    password: ''
-  });
+  ngOnInit(): void {
+    this.loginForm = this.builder.group({
+      email: '',
+      password: ''
+    });
+  }
 
-  
+  submit() {
+    this.clientService.login(this.loginForm.value)
+      .then(data => {
+        console.log(data);
+        this.router.navigate(['/']);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
 }
