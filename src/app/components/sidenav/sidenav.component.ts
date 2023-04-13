@@ -1,32 +1,32 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ShoppingCartService} from "../../services/shopping-cart.service";
+import {CartItem} from "../../models/cartItem";
+import {ItemsService} from "../../services/items.service";
 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss']
 })
-export class SidenavComponent {
+export class SidenavComponent implements OnInit{
 
-  cartItems: any = [
-    {
-      name: 'Item 1',
-      price: 10.99,
-      image: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Diode-closeup.jpg',
-      quantity: 1
-    },
-    {
-      name: 'Item 2',
-      price: 7.99,
-      image: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Diode-closeup.jpg',
-      quantity: 1
-    }
-  ];
+  constructor(private shoppingCartService: ShoppingCartService, private itemService: ItemsService) {
+  }
+  cartItems: CartItem[] = [];
 
-  removeFromCart(item: any) {
-    this.cartItems.splice(this.cartItems.indexOf(item), 1);
+  ngOnInit(): void {
+    this.shoppingCartService.getCartItems().subscribe(items => {
+      this.cartItems = items;
+    });
   }
 
-  addRemove(item: any, action: string) {
+
+  removeFromCart(item: CartItem) {
+    this.cartItems.splice(this.cartItems.indexOf(item), 1);
+    this.shoppingCartService.removeFromCart(item.id);
+  }
+
+  addRemove(item: CartItem, action: string) {
     if (action === 'add') {
       item.quantity++;
     } else {
@@ -35,5 +35,7 @@ export class SidenavComponent {
       }
     }
   }
+
+
 
 }
