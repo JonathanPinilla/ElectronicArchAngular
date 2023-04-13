@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "@angular/fire/auth";
+import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "@angular/fire/auth";
 import {Client} from "../models/client";
 import {HttpClient} from "@angular/common/http";
 
@@ -24,6 +24,7 @@ export class ClientService {
             next: response => console.log(response),
             error: error => console.log(error)
           });
+        localStorage.setItem('logged', String(true));
 
       })
       .catch((error) => {
@@ -34,6 +35,10 @@ export class ClientService {
 
   login({email, password}: any){
     return signInWithEmailAndPassword(this.auth, email, password);
+  }
+
+  logout(){
+    return signOut(this.auth);
   }
 
 }
