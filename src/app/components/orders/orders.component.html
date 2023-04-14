@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+<div class="flex">
+  <mat-accordion *ngFor="let order of orders">
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Order: {{order.id}}
+        </mat-panel-title>
+        <mat-panel-description>
+          Value: {{order.price}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div *ngFor="let item of order.items">
+        <mat-list-item>
+          <mat-icon>folder</mat-icon>
+          <h4>{{item.name}}</h4>
+          <p> {{item.price}}</p>
+        </mat-list-item>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

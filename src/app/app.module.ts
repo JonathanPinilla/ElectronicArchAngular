@@ -28,6 +28,8 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { OrdersComponent } from './components/orders/orders.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     SidenavComponent,
     CartPageComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    OrdersComponent
   ],
     imports: [
         BrowserModule,
@@ -59,7 +62,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
         ReactiveFormsModule,
         provideFirebaseApp(() => initializeApp(environment.firebase)),
         provideAuth(() => getAuth()),
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatExpansionModule
     ],
   providers: [],
   bootstrap: [AppComponent]
