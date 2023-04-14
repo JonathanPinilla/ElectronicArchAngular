@@ -13,7 +13,7 @@
           </button>
         </div>
         <div class="cart-item-name">{{ item.name }}</div>
-        <div class="cart-item-price">{{ item.price }}</div>
+        <div class="cart-item-price"> ${{ item.price }}</div>
         <div>
           <button mat-icon-button (click)="addRemove(item, 'remove')">
             <mat-icon>remove</mat-icon>
@@ -25,6 +25,7 @@
         </div>
         <mat-divider></mat-divider>
       </div>
+      <button mat-raised-button color="primary" class="checkout-button" (click)="checkOut()" *ngIf="cartItems.length>0">Checkout</button>
     </mat-list>
   </mat-drawer>
 </mat-drawer-container>

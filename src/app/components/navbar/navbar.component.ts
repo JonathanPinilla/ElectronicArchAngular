@@ -11,11 +11,8 @@ export class NavbarComponent implements OnInit{
 
   constructor(private clientService: ClientService, private router: Router) {
   }
-  logged: string = 'false';
-  cartItems = [
-    { name: 'Item 1', price: 10.99, image: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Diode-closeup.jpg' },
-    { name: 'Item 2', price: 7.99, image: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Diode-closeup.jpg' }
-  ];
+
+  logged: string = localStorage.getItem('logged') || 'false';
 
   ngOnInit(): void {
     this.logged = localStorage.getItem('logged') || 'false';
@@ -25,9 +22,8 @@ export class NavbarComponent implements OnInit{
     this.clientService.logout()
       .then(() => {
         console.log('logged out');
-        this.logged = 'false';
         localStorage.setItem('logged', String(false));
-        this.router.navigate(['']);
+        this.router.navigate(['login']);
       })
       .catch((error) => {
       console.log(error);

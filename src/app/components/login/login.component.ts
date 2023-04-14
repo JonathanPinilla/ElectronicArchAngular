@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
     this.clientService.login(this.loginForm.value)
       .then(data => {
         console.log(data);
+        localStorage.setItem('logged', String(true));
         this.router.navigate(['/']);
       })
       .catch(error => {

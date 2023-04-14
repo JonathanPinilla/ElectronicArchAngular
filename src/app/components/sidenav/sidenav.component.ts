@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ShoppingCartService} from "../../services/shopping-cart.service";
 import {CartItem} from "../../models/cartItem";
 import {ItemsService} from "../../services/items.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sidenav',
@@ -10,20 +11,20 @@ import {ItemsService} from "../../services/items.service";
 })
 export class SidenavComponent implements OnInit{
 
-  constructor(private shoppingCartService: ShoppingCartService, private itemService: ItemsService) {
+  constructor(private shoppingCartService: ShoppingCartService, private itemService: ItemsService, private router: Router) {
   }
+
   cartItems: CartItem[] = [];
 
   ngOnInit(): void {
+    this.cartItems = this.shoppingCartService.getCartInitialItems();
     this.shoppingCartService.getCartItems().subscribe(items => {
       this.cartItems = items;
     });
   }
 
-
   removeFromCart(item: CartItem) {
-    this.cartItems.splice(this.cartItems.indexOf(item), 1);
-    this.shoppingCartService.removeFromCart(item.id);
+    this.shoppingCartService.removeFromCart(item);
   }
 
   addRemove(item: CartItem, action: string) {
@@ -36,6 +37,8 @@ export class SidenavComponent implements OnInit{
     }
   }
 
-
+  checkOut() {
+    this.router.navigate(['/shopping-cart']);
+  }
 
 }
