@@ -4,6 +4,7 @@ import {ShoppingCartService} from "../../services/shopping-cart.service";
 import {Item} from "../../models/item";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {CartItem} from "../../models/cartItem";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: 'app-grid',
@@ -18,7 +19,8 @@ export class GridComponent implements OnInit {
     constructor(
         private service: ItemsService,
         private shoppingCartService: ShoppingCartService,
-        private snackBar: MatSnackBar
+        private snackBar: MatSnackBar,
+        public route: ActivatedRoute
     ) {
     }
 
@@ -51,6 +53,29 @@ export class GridComponent implements OnInit {
         this.snackBar.open(message, action, {
             duration: 3000
         });
+    }
+
+    search(searchTerm: string){
+      if(searchTerm === ""){
+        this.getAll();
+      }else{
+        this.items = this.items.filter(item => item.name.toLowerCase().includes(searchTerm.toLowerCase()));
+      }
+    }
+
+    orderByPrice(order: string){
+      if(order === "desc")
+        this.items.sort((a, b) => b.price - a.price);
+      else
+        this.items.sort((a, b) => a.price - b.price);
+    }
+
+    filterByType(type: string){
+      if(type === "all"){
+        this.getAll();
+      }else{
+        this.items = this.items.filter(item => item.type === type);
+      }
     }
 
 }

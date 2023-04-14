@@ -4,14 +4,10 @@
     <span>Home</span>
   </a>
 
-  <mat-form-field appearance="outline" color="accent" class="searchBar">
-    <mat-label>search</mat-label>
-    <input matInput type="text" placeholder="search">
-  </mat-form-field>
-
   <button mat-icon-button class="userButton" [matMenuTriggerFor]="menu"><mat-icon>person</mat-icon></button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item *ngIf="logged === 'true'">Orders</button>
+    <button mat-menu-item *ngIf="logged === 'true'" [routerLink]="'/orders'">Orders</button>
+    <button mat-menu-item *ngIf="logged === 'true'" [routerLink]="'/shopping-cart'">Cart</button>
     <button mat-menu-item *ngIf="logged === 'true'" (click)="logout()">Log Out</button>
     <button mat-menu-item *ngIf="logged === 'false'" [routerLink]="['/login']">Login</button>
   </mat-menu>
