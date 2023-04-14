@@ -32,7 +32,7 @@ mat-card-actions{
 .filtering{
   position: fixed;
   z-index: 1000;
-  height: 40px;
+  height: fit-content;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -40,4 +40,8 @@ mat-card-actions{
   align-items: center;
   flex-wrap: wrap;
   background-color: rgba(2, 2, 2, 0.8 );
+}
+
+.filterButton{
+  margin: 5px;
 }

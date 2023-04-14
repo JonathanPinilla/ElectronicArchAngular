@@ -8,12 +8,12 @@
 
   <div class="filtering  mat-elevation-z4">
     <span>Filters: </span>
-    <button mat-stroked-button color="accent" (click)="filterByType('all')">All</button>
-    <button mat-stroked-button color="accent" (click)="filterByType('Laptop')">Laptop</button>
-    <button mat-stroked-button color="accent" (click)="filterByType('Accessories')">Accessories</button>
-    <button mat-stroked-button color="accent" (click)="filterByType('Phone')">Phone</button>
-    <button mat-stroked-button color="accent" (click)="filterByType('Tv')">Tv</button>
-    <button mat-stroked-button color="accent" [matMenuTriggerFor]="priceMenu">Order by price <mat-icon>keyboard_arrow_down</mat-icon></button>
+    <button class="filterButton" mat-stroked-button color="accent" (click)="filterByType('all')">All</button>
+    <button class="filterButton" mat-stroked-button color="accent" (click)="filterByType('Laptop')">Laptop</button>
+    <button class="filterButton" mat-stroked-button color="accent" (click)="filterByType('Accessories')">Accessories</button>
+    <button class="filterButton" mat-stroked-button color="accent" (click)="filterByType('Phone')">Phone</button>
+    <button class="filterButton" mat-stroked-button color="accent" (click)="filterByType('Tv')">Tv</button>
+    <button class="filterButton" mat-stroked-button color="accent" [matMenuTriggerFor]="priceMenu">Order by price <mat-icon>keyboard_arrow_down</mat-icon></button>
     <mat-menu #priceMenu>
       <button mat-menu-item (click)="orderByPrice('asc')">Lowest to highest</button>
       <button mat-menu-item (click)="orderByPrice('desc')">Highest to lowest</button>
