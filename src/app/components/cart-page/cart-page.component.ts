@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {ShoppingCartService} from "../../services/shopping-cart.service";
 import {ItemsService} from "../../services/items.service";
 import {CartItem} from "../../models/cartItem";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {Item} from "../../models/item";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-cart-page',
@@ -11,25 +14,36 @@ import {CartItem} from "../../models/cartItem";
 export class CartPageComponent implements OnInit {
 
 
-  items: CartItem[] = [];
+  cartItems: CartItem[] = [];
 
   totalPrice: number = 0;
 
-  constructor(private shoppingCartService: ShoppingCartService, private itemsService: ItemsService) {
+  orderForm: FormGroup = new FormGroup({});
+
+  constructor(private shoppingCartService: ShoppingCartService, private builder: FormBuilder, private router: Router) {
+
+    this.orderForm = this.builder.group({
+      clientId: '',
+      price: 0,
+      address: '',
+      contactNumber: '',
+      items: [],
+      deleted: false,
+    });
 
   }
 
   ngOnInit(): void {
-    this.items = this.shoppingCartService.getCartInitialItems();
+    this.cartItems = this.shoppingCartService.getCartInitialItems();
     this.shoppingCartService.getCartItems().subscribe(items => {
-      this.items = items;
+      this.cartItems = items;
     });
     this.total();
   }
 
   total() {
     this.totalPrice = 0;
-    this.items.forEach(item => {
+    this.cartItems.forEach(item => {
       this.totalPrice += (item.price * item.quantity);
     });
   }
@@ -49,6 +63,17 @@ export class CartPageComponent implements OnInit {
         this.total();
       }
     }
+  }
+
+  buyItems() {
+    this.orderForm.value.items = this.cartItems.map(cartItem => {
+      const { quantity, ...itemWithoutQuantity } = cartItem;
+      return itemWithoutQuantity;
+    });
+    this.orderForm.value.price = this.totalPrice;
+    this.shoppingCartService.buyItems(this.orderForm.value, this.cartItems);
+    this.router.navigate(['orders']);
+    this.shoppingCartService.emptyCart();
   }
 
 }

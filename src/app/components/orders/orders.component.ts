@@ -14,6 +14,8 @@ export class OrdersComponent implements OnInit{
 
   orders: Order[] = [];
 
+  tempOrders: Order[] = [];
+
   clientId: string = "";
 
   constructor(private orderService: OrderService, private auth: Auth) { }
@@ -26,10 +28,12 @@ export class OrdersComponent implements OnInit{
   getOrders() {
     return this.orderService.getOrders().subscribe({
       next: order => {
-        this.orders = order.find((order: Order) => order.clientId === this.clientId);
+        this.tempOrders = order;
+        this.orders = this.tempOrders.filter(order => order.clientId === this.clientId);
       },
       error: error => console.error(error)
     });
+
   }
 
 }

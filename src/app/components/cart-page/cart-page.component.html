@@ -6,7 +6,7 @@
     <mat-divider></mat-divider>
     <br>
     <div class="itemsList">
-      <div *ngFor="let item of items">
+      <div *ngFor="let item of cartItems">
         <div class="items">
           <img [src]=item.image alt="{{item.name}}"/>
           <h3>{{item.name}}</h3>
@@ -32,25 +32,25 @@
       </div>
     </div>
     <div>
-      <h3 *ngIf="items.length > 0">Total: {{totalPrice}}</h3>
-      <h3 *ngIf="items.length === 0">You didn't add items to the cart yet, click below or in the home button to see what we have for you</h3>
+      <h3 *ngIf="cartItems.length > 0">Total: {{totalPrice}}</h3>
+      <h3 *ngIf="cartItems.length === 0">You didn't add items to the cart yet, click below or in the home button to see what we have for you</h3>
     </div>
-    <button mat-raised-button color="accent" *ngIf="items.length === 0" [routerLink]="['']">Shop</button>
+    <button mat-raised-button color="accent" *ngIf="cartItems.length === 0" [routerLink]="['']">Shop</button>
   </div>
 
   <div class="orderForm mat-elevation-z4">
-    <form>
+    <form [formGroup]="orderForm">
       <h2>Fill the information for your order</h2>
       <mat-form-field appearance="outline" color="accent">
         <mat-label>Address</mat-label>
-        <input matInput placeholder="Address" name="address">
+        <input matInput placeholder="Address" name="address" formControlName="address">
       </mat-form-field>
       <mat-form-field appearance="outline" color="accent">
         <mat-label>Contact Number</mat-label>
-        <input matInput placeholder="Number" name="number">
+        <input matInput placeholder="Number" name="number" formControlName="contactNumber">
       </mat-form-field>
     </form>
-    <button mat-raised-button type="submit" color="accent">Buy</button>
+    <button mat-raised-button type="submit" color="accent" (click)="buyItems()">Buy</button>
   </div>
 
 </div>

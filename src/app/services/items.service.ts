@@ -28,6 +28,10 @@ export class ItemsService {
     return this.http.put<Item>(`${this.api}/${item.id}`, item);
   }
 
+  sell(id: string, quantity: number): Observable<any>{
+    return this.http.put(`${this.api}/${id}/sell?quantity=${quantity}`, null);
+  }
+
   delete(id: string): Observable<any>{
     return this.http.delete(`${this.api}/${id}`);
   }
