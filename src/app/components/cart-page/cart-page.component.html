@@ -35,8 +35,7 @@
       <h3 *ngIf="items.length > 0">Total: {{totalPrice}}</h3>
       <h3 *ngIf="items.length === 0">You didn't add items to the cart yet, click below or in the home button to see what we have for you</h3>
     </div>
-    <button mat-raised-button color="primary" *ngIf="items.length > 0">Checkout</button>
-    <button mat-raised-button color="accent" *ngIf="items.length === 0">Shop</button>
+    <button mat-raised-button color="accent" *ngIf="items.length === 0" [routerLink]="['']">Shop</button>
   </div>
 
   <div class="orderForm mat-elevation-z4">
@@ -51,7 +50,7 @@
         <input matInput placeholder="Number" name="number">
       </mat-form-field>
     </form>
-    <button mat-raised-button type="submit" color="primary">Buy</button>
+    <button mat-raised-button type="submit" color="accent">Buy</button>
   </div>
 
 </div>

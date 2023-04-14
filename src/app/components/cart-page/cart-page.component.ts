@@ -20,6 +20,7 @@ export class CartPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.items = this.shoppingCartService.getCartInitialItems();
     this.shoppingCartService.getCartItems().subscribe(items => {
       this.items = items;
     });
@@ -34,7 +35,7 @@ export class CartPageComponent implements OnInit {
   }
 
   removeFromCart(item: CartItem) {
-    this.items.splice(this.items.indexOf(item), 1);
+    this.shoppingCartService.removeFromCart(item);
     this.total();
   }
 
